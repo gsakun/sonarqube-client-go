@@ -1,2 +1,7 @@
-# generate-go-for-sonarqube
-use go generate to generate go code of sonarqube api
+# generate-goclient-for-sonarqube
+
+## 获取api.json
+```bash
+curl -u username:password "http://sonarqube:9000/api/webservices/list?include_internals=true" -o ./assets/api.json
+```
+## 修改Makefile

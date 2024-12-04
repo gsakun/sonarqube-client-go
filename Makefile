@@ -1,17 +1,17 @@
-generate:
-	@echo "Generate static files from assets"
-	go run cmd/static/main.go assets pkg/generate
+package_name := sonargo
+target_dir := sonar
 
-run: generate
-	go run cmd/main/main.go -h 
-
-clean:
-	@echo "Remove old generated files, used only in debug mode"
-	rm -rf test
+init-clean:
+	rm -f ${target_dir}/*.go
 	rm -rf integration_testing
+	echo "package $(package_name)" > doc.go
 
-debug: clean generate
-	go run cmd/main/main.go -logtostderr=true -v=1 -f assets/api.json -o test  -e "http://192.168.98.8:9000/api"
+update: init-clean
+	go mod tidy
+	go run ./cmd/main/main.go -f assets/api.json -n ${package_name}  -o ${target_dir} -e http://127.0.0.1:9000/api -logtostderr=true -u admin -p devops
 
-examples:
-	go run cmd/response/main.go -v=2 -logtostderr=true -f assets/api.json -e "http://192.168.98.8:9000/api"
+gen: init-clean
+	go mod tidy
+	go run ./cmd/main/main.go -f assets/api.json -n ${package_name} -o ${target_dir} -e http://127.0.0.1:9000/api -logtostderr=true -u admin -p devops
+
+    
