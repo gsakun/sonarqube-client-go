@@ -3,6 +3,11 @@ package sonar
 
 import "net/http"
 
+const (
+	ProjectVisibilityPublic  = "public"
+	ProjectVisibilityPrivate = "private"
+)
+
 type ProjectsService struct {
 	client *Client
 }
