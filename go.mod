@@ -1,9 +1,10 @@
-module sonarqube-client-go
+module github.com/gsakun/sonarqube-client-go
 
 go 1.21.13
 
 require (
 	github.com/dave/jennifer v1.2.0
+	github.com/davecgh/go-spew v1.1.1
 	github.com/fatih/color v1.7.0
 	github.com/google/go-querystring v1.0.0
 	github.com/json-iterator/go v1.1.5
