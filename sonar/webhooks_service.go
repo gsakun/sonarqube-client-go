@@ -63,7 +63,7 @@ type WebhooksListObject struct {
 }
 
 type WebhooksListObject_sub1 struct {
-	HasSecret string `json:"hasSecret,omitempty"`
+	HasSecret bool   `json:"hasSecret,omitempty"`
 	Key       string `json:"key,omitempty"`
 	Name      string `json:"name,omitempty"`
 	URL       string `json:"url,omitempty"`
